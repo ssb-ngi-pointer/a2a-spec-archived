@@ -11,7 +11,7 @@ sequenceDiagram
   participant old as Old SSB App
   participant room as Room 2.0 server
 
-  Note over new: Present Sign in button
+  Note over new: Present "Sign in" button
   new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>roomMembership=1&<br/>newSubfeed=1&<br/>replicateContacts=1
   os->>old: SSB URI
   old->>old: create subfeed `X`<br/> under meta feed
@@ -36,7 +36,7 @@ sequenceDiagram
   participant os as Operating System
   participant old as Old SSB App
 
-  Note over new: Present Sign in button
+  Note over new: Present "Migrate" button
   new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>everything=1
   os->>old: SSB URI
   old->>new: open muxrpc a2a duplex

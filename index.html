@@ -62,13 +62,12 @@ pre, code {
 </li>
 </ul>
 <h2 id="conditions">Conditions</h2>
-<p>TODO TODO TODO</p>
 <ul>
 <li>Both apps are installed on the same device, managed by the same operating system</li>
 <li>The apps do not need to share read-access to any common files</li>
 <li>Both apps need to recognize and handle SSB URIs</li>
 <li>The apps can run simultaneously and communicate with each other via muxrpc (if they know each other's multiserver addresses)</li>
-<li>TODO TODO TODO</li>
+<li>More TODO TODO TODO</li>
 </ul>
 <h2 id="specification">Specification</h2>
 <p>TODO TODO TODO TODO</p>
@@ -82,7 +81,7 @@ pre, code {
   participant old as Old SSB App
   participant room as Room 2.0 server
 
-  Note over new: Present Sign in button
+  Note over new: Present "Sign in" button
   new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>roomMembership=1&<br/>newSubfeed=1&<br/>replicateContacts=1
   os->>old: SSB URI
   old->>old: create subfeed `X`<br/> under meta feed
@@ -104,7 +103,7 @@ pre, code {
   participant os as Operating System
   participant old as Old SSB App
 
-  Note over new: Present Sign in button
+  Note over new: Present "Migrate" button
   new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>everything=1
   os->>old: SSB URI
   old->>new: open muxrpc a2a duplex
