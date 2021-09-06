@@ -63,10 +63,11 @@ pre, code {
 </ul>
 <h2 id="conditions">Conditions</h2>
 <ul>
-<li>Both apps are installed on the same device, managed by the same operating system</li>
-<li>The apps do not need to share read-access to any common files</li>
-<li>Both apps need to recognize and handle SSB URIs</li>
-<li>The apps can run simultaneously and communicate with each other via muxrpc (if they know each other's multiserver addresses)</li>
+<li>Both apps <strong>SHOULD</strong> be installed on the same device, managed by the same operating system</li>
+<li>It is <strong>RECOMMENDED</strong> that these apps do not have read access to shared files or directories</li>
+<li>Both apps <strong>MUST</strong> recognize and handle SSB URIs</li>
+<li>The apps <strong>MUST</strong> be able to run simultaneously to each other (no port conflicts, etc)</li>
+<li>The apps <strong>MUST</strong> be able to communicate with each other via muxrpc (if they know each other's multiserver addresses)</li>
 <li>More TODO TODO TODO</li>
 </ul>
 <h2 id="specification">Specification</h2>
