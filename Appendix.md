@@ -7,4 +7,4 @@
 
 ## List of new SSB URIs
 
-- `ssb:experimental?action=a2a&token${token}&.......`
+- `ssb:experimental?action=a2a&token=${token}&.......`
