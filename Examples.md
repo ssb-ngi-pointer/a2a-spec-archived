@@ -1,6 +1,6 @@
 ## Example 1: subapp
 
-**New app wants to be a subfeed of the root meta feed, AND wants that subfeed to be added as a member in rooms AND wants to partially replicate the main feed (contact graph)**
+**New app wants to be a subfeed of the root meta feed, AND wants that subfeed to be added as a member in rooms AND wants to partially replicate the main feed (contact graph).**
 
 ```mermaid
 sequenceDiagram
@@ -26,7 +26,7 @@ sequenceDiagram
 
 ## Example 2: migration
 
-**New app wants to take over everything from the old app and the old one should be deleted afterwards**
+**New app wants to take over everything from the old app and the old one should be deleted afterwards.**
 
 ```mermaid
 sequenceDiagram
@@ -51,7 +51,7 @@ sequenceDiagram
 
 ## Example 3: fusion dance
 
-**New app and old app want to link each other as the same "person"**
+**New app and old app want to link each other as the same "person".**
 
 ```mermaid
 sequenceDiagram
