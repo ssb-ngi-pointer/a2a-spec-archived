@@ -1,3 +1,5 @@
+# Examples
+
 ## Example 1: subapp
 
 **New app wants to be a subfeed of the root meta feed, AND wants that subfeed to be added as a member in rooms AND wants to partially replicate the main feed (contact graph).**
