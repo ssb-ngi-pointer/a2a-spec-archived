@@ -6,5 +6,4 @@
 - [Examples](Examples.md)
 - Implementation notes
 - Security considerations
-- Appendix
-  - List of new SSB URIs
+- [Appendix](Appendix.md)
