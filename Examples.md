@@ -37,7 +37,7 @@ sequenceDiagram
   participant old as Old SSB App
 
   Note over new: Present "Migrate" button
-  new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>multiserverAddress=newappMSAddr&<br/>everything=1
+  new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>multiserverAddress=newappMSAddr&<br/>migrateEverything=1
   os->>old: SSB URI
   old->>new: open muxrpc a2a duplex<br/>with token `ABADCAFE`
   activate old
