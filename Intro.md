@@ -1,6 +1,8 @@
 # SSB App-to-app Rendezvous
 
-**Revision:** `$REVISION`
+<!-- **Revision:** `$REVISION` -->
+
+**Status:** DRAFT! Please do not rely on this revision.
 
 **Author:** Andre Medeiros <contact@staltz.com>
 

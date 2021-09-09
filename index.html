@@ -41,15 +41,15 @@ pre, code {
 <script crossorigin src="https://unpkg.com/mermaid@8.9.1/dist/mermaid.min.js"></script>
 <body>
 
-<h1 id="ssb-app-to-app-rendezvous">SSB App-to-app Rendezvous</h1>
-<p><strong>Revision:</strong> <code>2021-09-06</code></p>
+<h1 id="user-content-ssb-app-to-app-rendezvous">SSB App-to-app Rendezvous</h1>
+<p><strong>Status:</strong> DRAFT! Please do not rely on this revision.</p>
 <p><strong>Author:</strong> Andre Medeiros <a href="mailto:contact@staltz.com">contact@staltz.com</a></p>
 <p><strong>License:</strong> This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
-<h2 id="abstract">Abstract</h2>
+<h2 id="user-content-abstract">Abstract</h2>
 <p>TODO TODO TODO TODO</p>
-<h2 id="terminology">Terminology</h2>
+<h2 id="user-content-terminology">Terminology</h2>
 <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>.</p>
-<h2 id="table-of-contents">Table of contents</h2>
+<h2 id="user-content-table-of-contents">Table of contents</h2>
 <ul>
 <li><a href="#conditions">Conditions</a></li>
 <li><a href="#specification">Specification</a></li>
@@ -67,7 +67,7 @@ pre, code {
 </ul>
 </li>
 </ul>
-<h2 id="conditions">Conditions</h2>
+<h2 id="user-content-conditions">Conditions</h2>
 <ul>
 <li>Both apps <strong>SHOULD</strong> be installed on the same device, managed by the same operating system</li>
 <li>It is <strong>RECOMMENDED</strong> that these apps do not have read access to shared files or directories</li>
@@ -76,82 +76,17 @@ pre, code {
 <li>The apps <strong>MUST</strong> be able to communicate with each other via muxrpc (if they know each other's multiserver addresses)</li>
 <li>More TODO TODO TODO</li>
 </ul>
-<h2 id="specification">Specification</h2>
+<h2 id="user-content-specification">Specification</h2>
 <p>TODO TODO TODO TODO</p>
-<h2 id="examples">Examples</h2>
-<h3 id="example-1-subapp">Example 1: subapp</h3>
+<h2 id="user-content-examples">Examples</h2>
+<h3 id="user-content-example-1-subapp">Example 1: subapp</h3>
 <p><strong>New app wants to be a subfeed of the root meta feed, AND wants that subfeed to be added as a member in rooms AND wants to partially replicate the main feed (contact graph).</strong></p>
-<div class="mermaid">
-  sequenceDiagram
-  participant new as New SSB App
-  participant os as Operating System
-  participant old as Old SSB App
-  participant room as Room 2.0 server
-
-  Note over new: Present "Sign in" button
-  new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>multiserverAddress=newappMSAddr&<br/>roomMembership=1&<br/>newSubfeed=1&<br/>replicateContacts=1
-  os->>old: SSB URI
-  old->>old: create subfeed `X`<br/> under meta feed
-  old->>+room: muxrpc: add member
-  room-->>-old: done
-  old->>new: open muxrpc a2a duplex<br/>with token `ABADCAFE`
-  activate old
-  activate new
-  old-->>new: info package containing<br/>subfeed keys `X` and<br/>`main` contact messages
-  new-->>old: close muxrpc a2a duplex
-  deactivate new
-  deactivate old
-</div>
-<h3 id="example-2-migration">Example 2: migration</h3>
+<h3 id="user-content-example-2-migration">Example 2: migration</h3>
 <p><strong>New app wants to take over everything from the old app and the old one should be deleted afterwards.</strong></p>
-<div class="mermaid">
-  sequenceDiagram
-  participant new as New SSB App
-  participant os as Operating System
-  participant old as Old SSB App
-
-  Note over new: Present "Migrate" button
-  new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>multiserverAddress=newappMSAddr&<br/>migrateEverything=1
-  os->>old: SSB URI
-  old->>new: open muxrpc a2a duplex<br/>with token `ABADCAFE`
-  activate old
-  activate new
-  old-->>new: muxrpc: info package containing<br />main keys `X`
-  new-->>old: createHistoryStream(main)
-  old-->>new: main feed messages
-  old->>old: delete own database
-  old-->>new: close muxrpc a2a duplex
-  deactivate new
-  deactivate old
-</div>
-<h3 id="example-3-fusion-dance">Example 3: fusion dance</h3>
+<h3 id="user-content-example-3-fusion-dance">Example 3: fusion dance</h3>
 <p><strong>New app and old app want to link each other as the same "person".</strong></p>
-<div class="mermaid">
-  sequenceDiagram
-  participant new as New SSB App
-  participant os as Operating System
-  participant old as Old SSB App
-
-  Note over new: Present "Link" button
-  new->>os: ssb:experimental?action=a2a&<br/>token=ABADCAFE&<br/>multiserverAddress=newappMSAddr&<br/>fusion=ssb:feed/ed25519/new
-  os->>old: SSB URI
-  old->>old: publish fusion/init
-  old->>old: publish fusion/invite for<br/>ssb:feed/ed25519/new
-  old->>new: open muxrpc a2a duplex<br/>with token `ABADCAFE`
-  activate old
-  activate new
-  old-->>new: info package containing<br />the two fusion messages
-  new->>new: publish fusion/consent
-  new-->>old: my fusion/consent message
-  old->>old: publish fusion/entrust
-  old-->>new: my fusion/entrust message
-  new->>new: proof-of-key
-  new-->>old: close muxrpc a2a duplex
-  deactivate new
-  deactivate old
-</div>
-<h2 id="appendix">Appendix</h2>
-<h3 id="list-of-new-muxrpc-apis">List of new muxrpc APIs</h3>
+<h2 id="user-content-appendix">Appendix</h2>
+<h3 id="user-content-list-of-new-muxrpc-apis">List of new muxrpc APIs</h3>
 <ul>
 <li>duplex
 <ul>
@@ -159,7 +94,7 @@ pre, code {
 </ul>
 </li>
 </ul>
-<h3 id="list-of-new-ssb-uris">List of new SSB URIs</h3>
+<h3 id="user-content-list-of-new-ssb-uris">List of new SSB URIs</h3>
 <ul>
 <li><code>ssb:experimental?action=a2a&#x26;token=${token}&#x26;.......</code></li>
 </ul>
